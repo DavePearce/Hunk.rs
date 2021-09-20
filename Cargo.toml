@@ -1,0 +1,11 @@
+[package]
+name = "hunk"
+version = "0.1.0"
+license = "Apache-2.0"
+edition = "2018"
+description = "A framework for in-memory data representations with a functional API"
+homepage = "https://github.com/DavePearce/Hunk.rs"
+repository = "https://github.com/DavePearce/Hunk.rs"
+readme = "README.md"
+
+[dependencies]
