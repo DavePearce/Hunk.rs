@@ -1,6 +1,6 @@
 use std::mem::size_of;
 
-use crate::ByteHunk;
+use crate::Hunk;
 use crate::Ref;
 
 // ===========================================================
@@ -12,15 +12,15 @@ struct Point {
     y: i32
 }
 
-fn read_point<'a>(hunk: &ByteHunk<'a>) -> Point {
-    let x = hunk.read_i32();
-    let y = hunk.skip(size_of::<i32>()).read_i32();
-    Point{x,y}
+fn read_point<'a>(hunk: &Hunk) -> Point {
+    let x = hunk.read_u8(0);
+    let y = hunk.read_u8(1);
+    Point{x:x as i32,y:y as i32}
 }
 
 #[test]
 pub fn test_01() {
-    let bs : [u8;8] = [1,0,0,0, 2,0,0,0];
+    let bs : [u8;8] = [1, 2];
     let hunk = ByteHunk::new(&bs,0);
     let r = Ref::new(hunk,read_point);
     let pt : Point = r.get();
