@@ -44,6 +44,6 @@ impl<'a> Hunk for ByteHunk<'a> {
     }
 
     fn write_u8(&self, offset: usize, data: u8) -> Patch {
-	Patch{}
+	Patch::new(self)
     }
 }

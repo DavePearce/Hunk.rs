@@ -3,6 +3,7 @@ mod byte_patch;
 mod hunk_ref;
 mod tests;
 
+use crate::byte_hunk::ByteHunk;
 use crate::byte_patch::Patch;
 
 // Stuf goes here
@@ -22,3 +23,6 @@ pub trait Hunk {
     fn write_u8(&self,offset: usize, data: u8) -> Patch; 
 }
 
+fn from_bytes<'a>(bytes: &'a [u8]) -> ByteHunk<'a> {
+    ByteHunk::new(bytes,0)
+}
