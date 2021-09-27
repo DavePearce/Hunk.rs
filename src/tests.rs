@@ -1,7 +1,4 @@
-use std::mem::size_of;
-
 use crate::Hunk;
-use crate::Ref;
 
 // ===========================================================
 // Example Data type
@@ -12,7 +9,7 @@ struct Point {
     y: i32
 }
 
-fn read_point<'a>(hunk: &Hunk) -> Point {
+fn read_point<'a>(hunk: &dyn Hunk) -> Point {
     let x = hunk.read_u8(0);
     let y = hunk.read_u8(1);
     Point{x:x as i32,y:y as i32}

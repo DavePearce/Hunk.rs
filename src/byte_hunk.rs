@@ -1,4 +1,5 @@
 use crate::Hunk;
+use crate::Patch;
 
 pub const EMPTY : ByteHunk<'static> = ByteHunk{ bytes: &[], offset: 0 };
 
@@ -40,5 +41,9 @@ impl<'a> Hunk for ByteHunk<'a> {
 
     fn read_u8(&self, offset: usize) -> u8 {
 	self.bytes[offset]
+    }
+
+    fn write_u8(&self, offset: usize, data: u8) -> Patch {
+	Patch{}
     }
 }
