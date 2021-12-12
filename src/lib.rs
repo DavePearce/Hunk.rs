@@ -23,6 +23,6 @@ pub trait Hunk {
     fn write_u8(&self,offset: usize, data: u8) -> Patch; 
 }
 
-fn from_bytes<'a>(bytes: &'a [u8]) -> ByteHunk<'a> {
+pub fn from_bytes<'a>(bytes: &'a [u8]) -> ByteHunk<'a> {
     ByteHunk::new(bytes,0)
 }
