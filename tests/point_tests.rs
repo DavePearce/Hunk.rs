@@ -1,5 +1,4 @@
-use crate::Hunk;
-use crate::hunk_ref::Ref;
+use hunk::{Hunk,Ref,ByteHunk};
 
 // ===========================================================
 // Example Data type
@@ -17,8 +16,8 @@ fn read_point<'a>(hunk: &dyn Hunk) -> Point {
 }
 
 #[test]
-pub fn test_01() {
-    let hunk = crate::from_bytes(&[1,2]);
+pub fn test_point_01() {
+    let hunk : ByteHunk = hunk::from_bytes(&[1,2]);
     let r = Ref::new(&hunk,read_point);
     let pt : Point = r.get();
     assert_eq!(pt.x,1);
